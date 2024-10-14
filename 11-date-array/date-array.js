@@ -2,6 +2,15 @@ const arrDate = ['10-02-2022', 'тест', '11/12/2023', '00/13/2022', '41/12/20
 
 
 function parseArr(arr) {
+    const result = getFilter(arr)
+        .map(elem => {
+            const [day, month, year] = elem.split(/[-\/]/);
+            return `${day}/${month}/${year}`;
+        })
+    return result;
+}
+
+function getFilter(arr) {
     const res = arr.filter(elem => {
         const dateParts = elem.split(/[-\/]/);
         if (dateParts.length !== 3) return false;
@@ -15,10 +24,6 @@ function parseArr(arr) {
 
         return elem;
     })
-        .map(elem => {
-            const [day, month, year] = elem.split(/[-\/]/);
-            return `${day}/${month}/${year}`;
-        })
     return res;
 }
 
