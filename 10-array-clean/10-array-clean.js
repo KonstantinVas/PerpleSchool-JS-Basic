@@ -1,19 +1,17 @@
 function checkArray(arr, item, callback) {
     for (let el of arr) {
         if (el === item) {
-            console.log(true);
-            return console.log(callback(arr, el));
+            return callback(arr, el);
         }
     }
-    console.log(false)
-    console.log(arr);
-    return;
+    return false;
 }
 
 function deleteItemArray(arr, item) {
     let index = arr.indexOf(item);
-    arr.splice(index, 1);
-    return arr;
+    const result = arr.splice(index, 1);
+    console.log(true);
+    return result;
 }
 
-checkArray([3, 6, 9, 2], 6, deleteItemArray);
+console.log(checkArray([3, 6, 9, 2], 2, deleteItemArray));
